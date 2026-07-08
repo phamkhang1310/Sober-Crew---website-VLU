@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO & Meta Tags -->
+  <title>Sober Crew | Production House</title>
+  <meta name="description" content="Sober Crew Production House - Frame Your Soul, Hold Your Style. Premium video production, cinema camera rentals, and studio filming services in Ho Chi Minh City.">
+  <meta name="keywords" content="video production, cinema camera rental, studio filming, Ho Chi Minh City, commercial video, Sober Crew">
+  <meta name="author" content="Sober Crew">
+  <link rel="canonical" href="https://sobercrew.vn/">
+
+  <!-- Open Graph / Facebook / Zalo -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sobercrew.vn/">
+  <meta property="og:title" content="Sober Crew | Production House">
+  <meta property="og:description" content="Premium video production, cinema camera rentals, and studio filming services in Ho Chi Minh City. Frame Your Soul, Hold Your Style.">
+  <meta property="og:image" content="https://sobercrew.vn/assets/hero_bg.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://sobercrew.vn/">
+  <meta property="twitter:title" content="Sober Crew | Production House">
+  <meta property="twitter:description" content="Premium video production, cinema camera rentals, and studio filming services in Ho Chi Minh City. Frame Your Soul, Hold Your Style.">
+  <meta property="twitter:image" content="https://sobercrew.vn/assets/hero_bg.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;600;700;900&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for UI Elements -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="assets/logo.png" alt="Sober Crew Loading" class="preloader-logo">
+  </div>
+
+  <!-- Background Ambient Glows -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Header Section -->
+  <header id="main-header" class="header">
+    <div class="header-container">
+      <a href="#" class="logo" id="header-logo">
+        <img src="assets/logo.png" alt="Sober Crew Logo" class="logo-img">
+        <span class="logo-title">SOBER CREW</span>
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="services.html" class="nav-link">SERVICES</a>
+        <a href="#schedule" class="nav-link">SCHEDULE</a>
+        <a href="gallery.html" class="nav-link">GALLERY</a>
+        <a href="#contacts" class="nav-link">CONTACTS</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-login" id="btn-login-header">LOG IN</button>
+        <button class="btn btn-signup" id="btn-signup-header">SIGN UP</button>
+        
+        <!-- Mobile Nav Toggle -->
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-bg-wrapper">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+          <source src="assets/hero_video.mp4" type="video/mp4">
+        </video>
+        <!-- Fallback image behind video just in case video fails to load -->
+        <img src="assets/hero_bg.png" alt="Sober Crew Production Studio Background" class="hero-bg-img" style="z-index: -1;">
+        <div class="hero-overlay"></div>
+      </div>
+      
+      <div class="hero-content reveal reveal-scale">
+        <div class="hero-title-container">
+          <h1 class="hero-title text-stroke">FRAME YOUR SOUL</h1>
+          <h1 class="hero-title text-stroke-glow">FRAME YOUR SOUL</h1>
+          <h1 class="hero-title text-solid">FRAME YOUR SOUL</h1>
+        </div>
+        
+        <div class="hero-buttons">
+          <button class="btn btn-login btn-hero" id="btn-login-hero">LOG IN</button>
+          <button class="btn btn-signup btn-hero" id="btn-signup-hero">SIGN UP</button>
+        </div>
+        
+        <div class="hero-cards">
+          <!-- Card 1: White Premium Stat -->
+          <div class="stat-card stat-white reveal" id="stat-clients-1">
+            <h2 class="stat-num">10,000+</h2>
+            <p class="stat-lbl">Satisfied clients</p>
+          </div>
+          
+          <!-- Card 2: Glass Theme -->
+          <div class="stat-card stat-glass reveal" style="transition-delay: 0.1s;" id="stat-style">
+            <h2 class="stat-num-text">WE HOLD</h2>
+            <h2 class="stat-num-subtext">YOUR STYLE</h2>
+          </div>
+          
+          <!-- Card 3: Neon Theme -->
+          <div class="stat-card stat-neon reveal" style="transition-delay: 0.2s;" id="stat-projects">
+            <h2 class="stat-num">5,000+</h2>
+            <p class="stat-lbl">Projects completed</p>
+          </div>
+        </div>
+
+        <div class="hero-footer-text">
+          <p class="scrolling-text">FRAME YOUR SOUL</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Slider Section -->
+    <section class="about-section" id="about-us">
+      <div class="about-container">
+        <!-- Left Side Text Content -->
+        <div class="about-info-panel reveal reveal-left">
+          <div class="home-badge">
+            <span class="badge-text">HOME</span>
+          </div>
+          <h2 class="about-title">
+            WELCOME TO THE SOBER CREW, WHERE WE CAN FRAME YOUR SOUL AND HOLD YOUR STYLE.
+          </h2>
+          <a href="about.html" class="btn btn-more" id="btn-about-more">
+            <span>MORE</span>
+            <div class="arrow-circle">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+        
+        <!-- Right Side Interactive Slider -->
+        <div class="slider-panel reveal reveal-right">
+          <div class="slider-wrapper" id="slider-wrapper">
+            <!-- Slide 1 -->
+            <div class="slide-card active" data-index="0">
+              <img src="assets/production_zone.png" alt="Production Zone Studio Filming" class="slide-img">
+              <div class="slide-badge">
+                <span>Production Zone</span>
+              </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide-card" data-index="1">
+              <img src="assets/videographer.png" alt="Professional Videographer filming outdoor" class="slide-img">
+              <div class="slide-badge">
+                <span>Videographer</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Slider Navigation Arrows -->
+          <div class="slider-navigation">
+            <button class="nav-arrow prev-arrow" id="slider-prev" aria-label="Previous Project">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="nav-arrow next-arrow" id="slider-next" aria-label="Next Project">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="services-container">
+        <div class="section-header text-center reveal">
+          <div class="home-badge">
+            <span class="badge-text">WHAT WE DO</span>
+          </div>
+          <h2 class="section-title">OUR SERVICES</h2>
+        </div>
+        <div class="capabilities-grid mt-5">
+          <a href="services.html#commercial-video" class="capability-card capability-link card-hover-effect reveal">
+            <div class="capability-icon-box">
+              <i class="fa-solid fa-film"></i>
+            </div>
+            <h3 class="capability-title">Commercial Video</h3>
+            <p class="capability-desc">High-end TVCs and digital commercials tailored to elevate your brand identity with cinematic flair.</p>
+          </a>
+          <a href="services.html#studio-rental" class="capability-card capability-link card-hover-effect reveal" style="transition-delay: 0.1s;">
+            <div class="capability-icon-box">
+              <i class="fa-solid fa-warehouse"></i>
+            </div>
+            <h3 class="capability-title">Studio Rental</h3>
+            <p class="capability-desc">100m² fully equipped soundproof studio with dynamic lighting grids and complete noise isolation.</p>
+          </a>
+          <a href="services.html#equipment-rental" class="capability-card capability-link card-hover-effect reveal" style="transition-delay: 0.2s;">
+            <div class="capability-icon-box">
+              <i class="fa-solid fa-video"></i>
+            </div>
+            <h3 class="capability-title">Equipment Rental</h3>
+            <p class="capability-desc">Industry-standard 8K cinema cameras, anamorphic lenses, and professional grip gear available.</p>
+          </a>
+          <a href="services.html#photography" class="capability-card capability-link card-hover-effect reveal" style="transition-delay: 0.3s;">
+            <div class="capability-icon-box">
+              <i class="fa-solid fa-camera-retro"></i>
+            </div>
+            <h3 class="capability-title">Photography</h3>
+            <p class="capability-desc">Editorial, product, and fashion photography capturing the finest details of your creative vision.</p>
+          </a>
+        </div>
+        <div class="text-center mt-5">
+          <a href="services.html" class="btn btn-more">
+            <span>VIEW ALL DETAILS</span>
+            <div class="arrow-circle">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section" id="schedule">
+      <div class="schedule-container">
+        <div class="schedule-content reveal reveal-left">
+          <div class="section-header">
+            <div class="home-badge">
+              <span class="badge-text">BOOK A SESSION</span>
+            </div>
+            <h2 class="section-title">RESERVE THE CREW</h2>
+            <p class="section-desc mt-3">Ready to frame your soul? Book our studio or production team for your next cinematic project. Leave your details below and our crew will get in touch shortly.</p>
+          </div>
+        </div>
+        <div class="schedule-form-wrapper glass-panel reveal reveal-right">
+          <form class="schedule-form modal-form" id="booking-form">
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="book-name"><i class="fa-solid fa-user"></i> Name</label>
+                <input type="text" id="book-name" required placeholder="Your Name">
+              </div>
+              <div class="form-group flex-1">
+                <label for="book-email"><i class="fa-solid fa-envelope"></i> Email</label>
+                <input type="email" id="book-email" required placeholder="name@example.com">
+              </div>
+            </div>
+            <div class="form-row mt-3">
+              <div class="form-group flex-1">
+                <label for="book-service"><i class="fa-solid fa-briefcase"></i> Service</label>
+                <select id="book-service" class="styled-input" required>
+                  <option value="" disabled selected>Select a service...</option>
+                  <option value="commercial">Commercial Video</option>
+                  <option value="studio">Studio Rental</option>
+                  <option value="equipment">Equipment Rental</option>
+                  <option value="photography">Photography</option>
+                </select>
+              </div>
+              <div class="form-group flex-1">
+                <label for="book-date"><i class="fa-solid fa-calendar"></i> Date</label>
+                <input type="date" id="book-date" required class="styled-input">
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="book-message"><i class="fa-solid fa-message"></i> Project Details</label>
+              <textarea id="book-message" rows="4" placeholder="Tell us about your project..." class="styled-input styled-textarea" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit-form mt-4">SUBMIT REQUEST</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts, Gallery, Info Grid Section -->
+    <section class="grid-section" id="info-grid">
+      <div class="grid-container">
+        
+        <!-- Left Column -->
+        <div class="grid-col left-col reveal">
+          <!-- Location Info Card -->
+          <div class="info-card location-card card-hover-effect" id="card-location">
+            <div class="card-icon-container">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="card-details">
+              <p>70 Street No. 16, Hamlet 5, Phong Phu Residential Area, Ho Chi Minh City</p>
+            </div>
+          </div>
+          
+          <!-- Phone Info Card -->
+          <a href="tel:+84909059750" class="info-card phone-card card-hover-effect" id="card-phone">
+            <div class="card-icon-container">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="card-details">
+              <p>+84 909 059 750</p>
+            </div>
+          </a>
+          
+          <!-- Small Visual Thumbnails -->
+          <div class="visual-row">
+            <div class="visual-thumbnail thumb-cam" id="thumb-camera">
+              <img src="assets/camera_setup.png" alt="Studio Camera Rig Close Up" class="thumb-img">
+            </div>
+            <div class="visual-thumbnail thumb-qr" id="thumb-qr-code">
+              <img src="assets/qr_code.png" alt="Sober Crew Tech QR Code" class="thumb-img">
+              <div class="qr-overlay">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Center Emblem Column -->
+        <div class="grid-col center-col reveal" style="transition-delay: 0.15s;">
+          <div class="emblem-card card-hover-effect" id="card-emblem">
+            <div class="emblem-graphic">
+              <img src="assets/logo.png" alt="Sober Crew Emblem" class="tech-emblem-logo">
+              <div class="corner-accents">
+                <span class="corner tl"></span>
+                <span class="corner tr"></span>
+                <span class="corner bl"></span>
+                <span class="corner br"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Column -->
+        <div class="grid-col right-col reveal" style="transition-delay: 0.3s;">
+          <!-- Row of Wifi and Gallery Buttons -->
+          <div class="button-card-row">
+            <div class="small-badge-card wifi-card" id="badge-wifi">
+              <i class="fa-solid fa-wifi"></i>
+              <span class="badge-label">WI-FI FREE</span>
+            </div>
+            <a href="gallery.html" class="small-badge-card gallery-card" id="badge-gallery-nav">
+              <span class="badge-label">GALLERY</span>
+            </a>
+          </div>
+          
+          <!-- Clapperboard Image Card -->
+          <div class="media-card clapper-card" id="card-clapper">
+            <img src="assets/clapperboard.png" alt="Movie Clapperboard Action" class="media-img">
+          </div>
+          
+          <!-- Text Stats Cards -->
+          <div class="features-row">
+            <div class="feature-text-card text-dark-card" id="card-devices">
+              <p class="feature-title">Various kinds of devices</p>
+            </div>
+            <div class="feature-text-card text-dark-card" id="card-space">
+              <p class="feature-num">100m<sup>2</sup></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Film Strip Editor Bar -->
+      <div class="filmstrip-container" id="gallery">
+        <div class="filmstrip-track">
+          <img src="assets/film_strip.png" alt="Production Film Timeline Color Strip" class="filmstrip-img">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer reveal" id="contacts">
+    <div class="footer-grid">
+      <!-- Footer Brand Column -->
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <div class="footer-logo-brand">
+            <img src="assets/logo.png" alt="Sober Crew Logo" class="footer-logo-img">
+            <span class="footer-logo-title">SOBER CREW</span>
+          </div>
+          <span class="footer-logo-sub">PRODUCTION HOUSE</span>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <p class="copyright">Copyright © 2026. All rights reserved</p>
+      </div>
+      
+      <!-- Footer Address Column -->
+      <div class="footer-col address-col">
+        <h4 class="footer-heading"><i class="fa-solid fa-location-dot footer-icon"></i>Address</h4>
+        <p class="footer-text">70 Street No. 16, Hamlet 5, Phong Phu Residential Area, Ho Chi Minh City</p>
+        
+        <h4 class="footer-heading"><i class="fa-solid fa-phone footer-icon"></i>Phone Number</h4>
+        <p class="footer-text">+84 909 059 750</p>
+        <p class="footer-text">Email: Mr. Khang Duy: <a href="mailto:phamkhang1310@gmail.com" class="footer-link">phamkhang1310@gmail.com</a></p>
+      </div>
+      
+      <!-- Footer Working Hours Column -->
+      <div class="footer-col hours-col">
+        <h4 class="footer-heading"><i class="fa-solid fa-clock footer-icon"></i>Working Hours</h4>
+        <div class="hours-row">
+          <span class="hours-day">Mon - Fri</span>
+          <span class="hours-time">: 8:30 - 17:30</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Sat</span>
+          <span class="hours-time">: 8:30 - 11:30</span>
+        </div>
+        
+        <h4 class="footer-heading mt-4"><i class="fa-solid fa-user footer-icon"></i>Mr. Khang Duy</h4>
+        <p class="footer-text">+84 909 059 750</p>
+      </div>
+      
+      <!-- Footer Newsletter Column -->
+      <div class="footer-col newsletter-col">
+        <h4 class="footer-heading newsletter-title">WANNA SEE MORE ABOUT US?</h4>
+        <form class="newsletter-form" id="newsletter-form">
+          <div class="input-group">
+            <input type="email" placeholder="Your email" id="newsletter-email" required>
+            <button type="submit" class="newsletter-submit-btn" aria-label="Subscribe">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+  <!-- Log In Modal -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="login-modal-close" aria-label="Close Login Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-header">
+        <h3 class="modal-title">ACCESS PORTAL</h3>
+        <p class="modal-subtitle">Log in to your Sober Crew profile</p>
+      </div>
+      <form class="modal-form" id="login-form">
+        <div class="form-group">
+          <label for="login-user"><i class="fa-solid fa-envelope"></i> Email or Username</label>
+          <input type="text" id="login-user" required placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="login-pass"><i class="fa-solid fa-lock"></i> Password</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="login-pass" required placeholder="••••••••">
+            <button type="button" class="password-toggle" id="login-pass-toggle" aria-label="Toggle Password Visibility">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="form-actions">
+          <div class="remember-me">
+            <input type="checkbox" id="login-remember">
+            <label for="login-remember">Remember connection</label>
+          </div>
+          <a href="#" class="forgot-pass-link">Forgot credentials?</a>
+        </div>
+        <button type="submit" class="btn btn-submit-form">LOG IN</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div class="modal-overlay" id="signup-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="signup-modal-close" aria-label="Close Signup Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-header">
+        <h3 class="modal-title">CREATE PROFILE</h3>
+        <p class="modal-subtitle">Join the Sober Crew network</p>
+      </div>
+      <form class="modal-form" id="signup-form">
+        <div class="form-group">
+          <label for="signup-name"><i class="fa-solid fa-user"></i> Full Name</label>
+          <input type="text" id="signup-name" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="signup-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+          <input type="email" id="signup-email" required placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label for="signup-pass"><i class="fa-solid fa-lock"></i> Password</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="signup-pass" required placeholder="••••••••">
+            <button type="button" class="password-toggle" id="signup-pass-toggle" aria-label="Toggle Password Visibility">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="signup-confirm"><i class="fa-solid fa-shield"></i> Confirm Password</label>
+          <input type="password" id="signup-confirm" required placeholder="••••••••">
+        </div>
+        <div class="form-terms">
+          <input type="checkbox" id="signup-terms" required>
+          <label for="signup-terms">I accept the Terms of Service & Privacy Policy</label>
+        </div>
+        <button type="submit" class="btn btn-submit-form">REGISTER</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scan QR Modal -->
+  <div class="modal-overlay" id="qr-modal">
+    <div class="modal-card qr-modal-card">
+      <button class="modal-close" id="qr-modal-close" aria-label="Close QR Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-header">
+        <h3 class="modal-title">SCAN ME</h3>
+        <p class="modal-subtitle">Scan to visit our virtual studio on mobile</p>
+      </div>
+      <div class="qr-zoom-container">
+        <img src="assets/qr_code.png" alt="Sober Crew Tech QR Code Zoomed" class="qr-zoomed-img">
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Custom Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
