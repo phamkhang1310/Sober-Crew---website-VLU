@@ -725,6 +725,17 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   color: var(--text-white);
   min-height: 90px;
+  transition: var(--transition-smooth);
+}
+
+#card-location {
+  cursor: default;
+}
+
+#card-location:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .card-icon-container {
@@ -788,6 +799,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border-color);
   position: relative;
   cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.visual-thumbnail:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
 .thumb-img {
@@ -945,6 +963,14 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   height: 160px;
   border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(204, 255, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(204, 255, 0, 0.15);
 }
 
 .media-img {
@@ -955,7 +981,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .media-card:hover .media-img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .features-row {
@@ -995,6 +1021,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--bg-card-hover);
   border-color: var(--border-color-hover);
   transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(204, 255, 0, 0.1);
 }
 
 /* Film Strip Divider */
@@ -1608,6 +1635,84 @@ h1, h2, h3, h4, h5, h6 {
   resize: vertical;
 }
 
+/* Booking Purpose Selector Toggle Cards */
+.form-purpose-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.purpose-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.purpose-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.purpose-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.purpose-card-content i {
+  font-size: 22px;
+  color: var(--text-gray);
+  transition: var(--transition-fast);
+}
+
+.purpose-card-content span {
+  font-family: var(--font-logo);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.purpose-card-content small {
+  font-size: 11px;
+  color: var(--text-gray);
+  line-height: 1.3;
+}
+
+.purpose-card:hover {
+  border-color: rgba(204, 255, 0, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.purpose-card.active {
+  background: rgba(204, 255, 0, 0.08);
+  border-color: var(--neon-lime);
+  box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+}
+
+.purpose-card.active .purpose-card-content i {
+  color: var(--neon-lime);
+}
+
+.booking-branch {
+  transition: var(--transition-smooth);
+}
+
+@media (max-width: 600px) {
+  .form-purpose-selector {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .form-row {
     flex-direction: column;
@@ -1912,12 +2017,14 @@ a.btn {
 }
 
 .gallery-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  border-color: rgba(204, 255, 0, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(204, 255, 0, 0.25);
 }
 
 .gallery-card:hover::after {
   border-color: var(--neon-lime);
-  box-shadow: inset 0 0 20px rgba(204, 255, 0, 0.15);
+  box-shadow: inset 0 0 20px rgba(204, 255, 0, 0.2);
 }
 
 .gallery-media-wrapper {
@@ -1935,7 +2042,7 @@ a.btn {
 }
 
 .gallery-card:hover .gallery-img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .gallery-card-overlay {
@@ -2252,8 +2359,9 @@ a.btn {
 }
 
 .capability-card:hover {
-  border-color: var(--border-color-hover);
-  transform: translateY(-4px);
+  border-color: rgba(204, 255, 0, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(204, 255, 0, 0.15);
 }
 
 .capability-icon-box {
@@ -2457,7 +2565,12 @@ a.btn {
   top: 0;
   left: 0;
   z-index: 0;
-  opacity: 0.7; /* Blend with overlay */
+  opacity: 0; /* Initially hidden for lazy loading fade-in */
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-bg-video.loaded {
+  opacity: 0.7; /* Blend with overlay once loaded and playing */
 }
 
 /* --- 3. Lightbox --- */
