@@ -498,9 +498,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Booking Form
+  // Booking Form & Branching Logic
   const bookingForm = document.getElementById('booking-form');
   if (bookingForm) {
+    const purposeCards = bookingForm.querySelectorAll('.purpose-card');
+    const branchProduction = document.getElementById('branch-production');
+    const branchEquipment = document.getElementById('branch-equipment');
+
+    const toggleBookingBranch = (selectedType) => {
+      purposeCards.forEach(card => {
+        const radio = card.querySelector('input[type="radio"]');
+        if (radio.value === selectedType) {
+          card.classList.add('active');
+          radio.checked = true;
+        } else {
+          card.classList.remove('active');
+          radio.checked = false;
+        }
+      });
+
+      if (selectedType === 'production') {
+        branchProduction.style.display = 'block';
+        branchEquipment.style.display = 'none';
+
+        // Toggle required attributes
+        document.getElementById('book-service-type').required = true;
+        document.getElementById('book-budget').required = true;
+        document.getElementById('book-prod-date').required = true;
+        document.getElementById('book-brief').required = true;
+
+        document.getElementById('book-gear-type').required = false;
+        document.getElementById('book-pickup-date').required = false;
+        document.getElementById('book-return-date').required = false;
+      } else {
+        branchProduction.style.display = 'none';
+        branchEquipment.style.display = 'block';
+
+        // Toggle required attributes
+        document.getElementById('book-service-type').required = false;
+        document.getElementById('book-budget').required = false;
+        document.getElementById('book-prod-date').required = false;
+        document.getElementById('book-brief').required = false;
+
+        document.getElementById('book-gear-type').required = true;
+        document.getElementById('book-pickup-date').required = true;
+        document.getElementById('book-return-date').required = true;
+      }
+    };
+
+    purposeCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const radio = card.querySelector('input[type="radio"]');
+        toggleBookingBranch(radio.value);
+      });
+    });
+
     bookingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -509,13 +561,28 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
       btn.disabled = true;
 
-      const payload = {
+      const selectedType = bookingForm.querySelector('input[name="booking_type"]:checked').value;
+      
+      let payload = {
+        type: selectedType,
         name: document.getElementById('book-name').value,
-        email: document.getElementById('book-email').value,
-        service: document.getElementById('book-service').value,
-        date: document.getElementById('book-date').value,
-        message: document.getElementById('book-message').value
+        contact: document.getElementById('book-email').value,
+        timestamp: new Date().toISOString()
       };
+
+      if (selectedType === 'production') {
+        payload.serviceType = document.getElementById('book-service-type').value;
+        payload.budget = document.getElementById('book-budget').value;
+        payload.prodDate = document.getElementById('book-prod-date').value;
+        payload.brief = document.getElementById('book-brief').value;
+        payload.service = 'Production Services (' + payload.serviceType + ')';
+      } else {
+        payload.gearType = document.getElementById('book-gear-type').value;
+        payload.pickupDate = document.getElementById('book-pickup-date').value;
+        payload.returnDate = document.getElementById('book-return-date').value;
+        payload.notes = document.getElementById('book-gear-notes').value;
+        payload.service = 'Equipment & Studio Rental (' + payload.gearType + ')';
+      }
 
       // Simulate booking request without server
       setTimeout(() => {
@@ -523,15 +590,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentUserStr = localStorage.getItem('soberCrewUser');
         if (currentUserStr) {
           const user = JSON.parse(currentUserStr);
-          payload.email = user.email; // bind booking to logged-in user's email
+          payload.userEmail = user.email; // bind booking to logged-in user's email
         }
 
         const bookings = JSON.parse(localStorage.getItem('soberCrewBookings')) || [];
         bookings.push(payload);
         localStorage.setItem('soberCrewBookings', JSON.stringify(bookings));
 
-        showToast('Booking request sent successfully! We will contact you soon.', 'success');
+        showToast('Booking request submitted successfully! Sober Crew will contact you shortly.', 'success');
         bookingForm.reset();
+        toggleBookingBranch('production'); // reset back to default branch
         
         btn.innerHTML = originalHtml;
         btn.disabled = false;
@@ -611,4 +679,44 @@ document.addEventListener('DOMContentLoaded', () => {
   
   window.addEventListener('scroll', highlightNav);
   highlightNav(); // Call once on load
+
+  // =========================================================================
+  // 10. Background Video Lazy Loading & Network Optimization
+  // =========================================================================
+  const heroVideo = document.querySelector('.hero-bg-video');
+  if (heroVideo) {
+    const sourceEl = heroVideo.querySelector('source');
+    const dataSrc = sourceEl ? sourceEl.getAttribute('data-src') : null;
+    
+    // Detect mobile device (screen size or UA match)
+    const isMobileDevice = window.innerWidth < 768 || 
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+    // Detect network speed / data saver (navigator.connection)
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const isDataSaver = conn && (conn.saveData || ['slow-2g', '2g', '3g'].includes(conn.effectiveType));
+    
+    if (isMobileDevice || isDataSaver) {
+      // Remove video track entirely to prevent any network load
+      heroVideo.remove();
+      console.log("[Sober Crew Video Optimizer] Mobile device or data saver detected. Prevented loading 500MB background video.");
+    } else if (dataSrc) {
+      // Lazy load only on fast desktop connections
+      sourceEl.setAttribute('src', dataSrc);
+      heroVideo.load();
+      
+      const playVideo = () => {
+        heroVideo.play()
+          .then(() => {
+            heroVideo.classList.add('loaded'); // Fade in transition
+          })
+          .catch(err => {
+            console.warn("[Sober Crew Video Optimizer] Autoplay blocked or failed:", err);
+          });
+      };
+      
+      // Load and play when canplay is triggered
+      heroVideo.addEventListener('canplay', playVideo, { once: true });
+    }
+  }
 });

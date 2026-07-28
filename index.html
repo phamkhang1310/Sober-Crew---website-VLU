@@ -78,8 +78,8 @@
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-bg-wrapper">
-        <video autoplay loop muted playsinline class="hero-bg-video">
-          <source src="assets/hero_video.mp4" type="video/mp4">
+        <video loop muted playsinline class="hero-bg-video" preload="none">
+          <source data-src="assets/hero_video.mp4" type="video/mp4">
         </video>
         <!-- Fallback image behind video just in case video fails to load -->
         <img src="assets/hero_bg.png" alt="Sober Crew Production Studio Background" class="hero-bg-img" style="z-index: -1;">
@@ -240,37 +240,107 @@
         </div>
         <div class="schedule-form-wrapper glass-panel reveal reveal-right">
           <form class="schedule-form modal-form" id="booking-form">
-            <div class="form-row">
-              <div class="form-group flex-1">
-                <label for="book-name"><i class="fa-solid fa-user"></i> Name</label>
-                <input type="text" id="book-name" required placeholder="Your Name">
-              </div>
-              <div class="form-group flex-1">
-                <label for="book-email"><i class="fa-solid fa-envelope"></i> Email</label>
-                <input type="email" id="book-email" required placeholder="name@example.com">
-              </div>
+            <!-- Purpose Selector (Top Radio/Toggle Cards) -->
+            <div class="form-purpose-selector">
+              <label class="purpose-card active" id="purpose-card-production">
+                <input type="radio" name="booking_type" value="production" checked class="purpose-radio">
+                <div class="purpose-card-content">
+                  <i class="fa-solid fa-clapperboard"></i>
+                  <span>Production Services</span>
+                  <small>TVCs, MVs, Commercials & Viral Clips</small>
+                </div>
+              </label>
+              <label class="purpose-card" id="purpose-card-equipment">
+                <input type="radio" name="booking_type" value="equipment" class="purpose-radio">
+                <div class="purpose-card-content">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>Equipment & Studio Rental</span>
+                  <small>Cinema Cameras, Lenses & 100m² Studio</small>
+                </div>
+              </label>
             </div>
+
+            <!-- Common Fields: Name & Contact Info -->
             <div class="form-row mt-3">
               <div class="form-group flex-1">
-                <label for="book-service"><i class="fa-solid fa-briefcase"></i> Service</label>
-                <select id="book-service" class="styled-input" required>
-                  <option value="" disabled selected>Select a service...</option>
-                  <option value="commercial">Commercial Video</option>
-                  <option value="studio">Studio Rental</option>
-                  <option value="equipment">Equipment Rental</option>
-                  <option value="photography">Photography</option>
-                </select>
+                <label for="book-name"><i class="fa-solid fa-user"></i> Full Name</label>
+                <input type="text" id="book-name" required placeholder="Your full name" class="styled-input">
               </div>
               <div class="form-group flex-1">
-                <label for="book-date"><i class="fa-solid fa-calendar"></i> Date</label>
-                <input type="date" id="book-date" required class="styled-input">
+                <label for="book-email"><i class="fa-solid fa-envelope"></i> Email / Contact Info</label>
+                <input type="text" id="book-email" required placeholder="name@example.com or Phone" class="styled-input">
               </div>
             </div>
-            <div class="form-group mt-3">
-              <label for="book-message"><i class="fa-solid fa-message"></i> Project Details</label>
-              <textarea id="book-message" rows="4" placeholder="Tell us about your project..." class="styled-input styled-textarea" required></textarea>
+
+            <!-- Branch 1: Production Services -->
+            <div id="branch-production" class="booking-branch active">
+              <div class="form-row mt-3">
+                <div class="form-group flex-1">
+                  <label for="book-service-type"><i class="fa-solid fa-film"></i> Production Type</label>
+                  <select id="book-service-type" class="styled-input" required>
+                    <option value="" disabled selected>Select production type...</option>
+                    <option value="tvc">TVC / Brand Commercial</option>
+                    <option value="mv">Music Video (MV)</option>
+                    <option value="viral">Viral Clip / Shorts / Reels</option>
+                    <option value="photography">Editorial / Product Photography</option>
+                    <option value="full_package">Full Production Package (A-Z)</option>
+                  </select>
+                </div>
+                <div class="form-group flex-1">
+                  <label for="book-budget"><i class="fa-solid fa-coins"></i> Estimated Budget</label>
+                  <select id="book-budget" class="styled-input" required>
+                    <option value="" disabled selected>Select budget range...</option>
+                    <option value="under_50m">&lt; $2,000 USD (&lt; 50M VND)</option>
+                    <option value="50m_100m">$2,000 - $4,000 USD (50M - 100M VND)</option>
+                    <option value="100m_200m">$4,000 - $8,000 USD (100M - 200M VND)</option>
+                    <option value="over_200m">&gt; $8,000 USD (&gt; 200M VND)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row mt-3">
+                <div class="form-group flex-1">
+                  <label for="book-prod-date"><i class="fa-solid fa-calendar"></i> Target Shoot / Project Date</label>
+                  <input type="date" id="book-prod-date" class="styled-input" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label for="book-brief"><i class="fa-solid fa-file-lines"></i> Project Brief & Concept</label>
+                <textarea id="book-brief" rows="3" placeholder="Describe your project idea, script summary, or reference links..." class="styled-input styled-textarea" required></textarea>
+              </div>
             </div>
-            <button type="submit" class="btn btn-submit-form mt-4">SUBMIT REQUEST</button>
+
+            <!-- Branch 2: Equipment & Studio Rental -->
+            <div id="branch-equipment" class="booking-branch" style="display: none;">
+              <div class="form-row mt-3">
+                <div class="form-group flex-1">
+                  <label for="book-gear-type"><i class="fa-solid fa-sliders"></i> Rental Category</label>
+                  <select id="book-gear-type" class="styled-input">
+                    <option value="" disabled selected>Select equipment or studio...</option>
+                    <option value="studio_only">100m² Soundproof Studio Space</option>
+                    <option value="camera_rig">8K Cinema Camera Package</option>
+                    <option value="lenses">Anamorphic & Prime Lens Set</option>
+                    <option value="lighting">Lighting Grid & Heavy Grip Systems</option>
+                    <option value="full_combo">Full Studio + Camera Gear Package</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row mt-3">
+                <div class="form-group flex-1">
+                  <label for="book-pickup-date"><i class="fa-solid fa-calendar-check"></i> Pickup / Start Date</label>
+                  <input type="date" id="book-pickup-date" class="styled-input">
+                </div>
+                <div class="form-group flex-1">
+                  <label for="book-return-date"><i class="fa-solid fa-calendar-xmark"></i> Return / End Date</label>
+                  <input type="date" id="book-return-date" class="styled-input">
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label for="book-gear-notes"><i class="fa-solid fa-list-check"></i> Gear List & Special Requests</label>
+                <textarea id="book-gear-notes" rows="3" placeholder="List specific camera bodies, lenses, accessories, or custom requirements..." class="styled-input styled-textarea"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-submit-form mt-4">SUBMIT BOOKING REQUEST</button>
           </form>
         </div>
       </div>
