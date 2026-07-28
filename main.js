@@ -502,56 +502,85 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookingForm = document.getElementById('booking-form');
   if (bookingForm) {
     const purposeCards = bookingForm.querySelectorAll('.purpose-card');
+    const bookingTypeRadios = bookingForm.querySelectorAll('input[name="booking_type"]');
     const branchProduction = document.getElementById('branch-production');
     const branchEquipment = document.getElementById('branch-equipment');
 
     const toggleBookingBranch = (selectedType) => {
       purposeCards.forEach(card => {
         const radio = card.querySelector('input[type="radio"]');
-        if (radio.value === selectedType) {
+        if (radio && radio.value === selectedType) {
           card.classList.add('active');
           radio.checked = true;
-        } else {
+        } else if (card) {
           card.classList.remove('active');
-          radio.checked = false;
+          if (radio) radio.checked = false;
         }
       });
 
       if (selectedType === 'production') {
-        branchProduction.style.display = 'block';
-        branchEquipment.style.display = 'none';
+        if (branchProduction) branchProduction.style.display = 'block';
+        if (branchEquipment) branchEquipment.style.display = 'none';
 
         // Toggle required attributes
-        document.getElementById('book-service-type').required = true;
-        document.getElementById('book-budget').required = true;
-        document.getElementById('book-prod-date').required = true;
-        document.getElementById('book-brief').required = true;
+        const serviceType = document.getElementById('book-service-type');
+        const budget = document.getElementById('book-budget');
+        const prodDate = document.getElementById('book-prod-date');
+        const brief = document.getElementById('book-brief');
+        const gearType = document.getElementById('book-gear-type');
+        const pickupDate = document.getElementById('book-pickup-date');
+        const returnDate = document.getElementById('book-return-date');
 
-        document.getElementById('book-gear-type').required = false;
-        document.getElementById('book-pickup-date').required = false;
-        document.getElementById('book-return-date').required = false;
+        if (serviceType) serviceType.required = true;
+        if (budget) budget.required = true;
+        if (prodDate) prodDate.required = true;
+        if (brief) brief.required = true;
+
+        if (gearType) gearType.required = false;
+        if (pickupDate) pickupDate.required = false;
+        if (returnDate) returnDate.required = false;
       } else {
-        branchProduction.style.display = 'none';
-        branchEquipment.style.display = 'block';
+        if (branchProduction) branchProduction.style.display = 'none';
+        if (branchEquipment) branchEquipment.style.display = 'block';
 
         // Toggle required attributes
-        document.getElementById('book-service-type').required = false;
-        document.getElementById('book-budget').required = false;
-        document.getElementById('book-prod-date').required = false;
-        document.getElementById('book-brief').required = false;
+        const serviceType = document.getElementById('book-service-type');
+        const budget = document.getElementById('book-budget');
+        const prodDate = document.getElementById('book-prod-date');
+        const brief = document.getElementById('book-brief');
+        const gearType = document.getElementById('book-gear-type');
+        const pickupDate = document.getElementById('book-pickup-date');
+        const returnDate = document.getElementById('book-return-date');
 
-        document.getElementById('book-gear-type').required = true;
-        document.getElementById('book-pickup-date').required = true;
-        document.getElementById('book-return-date').required = true;
+        if (serviceType) serviceType.required = false;
+        if (budget) budget.required = false;
+        if (prodDate) prodDate.required = false;
+        if (brief) brief.required = false;
+
+        if (gearType) gearType.required = true;
+        if (pickupDate) pickupDate.required = true;
+        if (returnDate) returnDate.required = true;
       }
     };
+
+    bookingTypeRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        toggleBookingBranch(e.target.value);
+      });
+    });
 
     purposeCards.forEach(card => {
       card.addEventListener('click', () => {
         const radio = card.querySelector('input[type="radio"]');
-        toggleBookingBranch(radio.value);
+        if (radio) {
+          toggleBookingBranch(radio.value);
+        }
       });
     });
+
+    // Run initial state setup
+    const initialChecked = bookingForm.querySelector('input[name="booking_type"]:checked');
+    toggleBookingBranch(initialChecked ? initialChecked.value : 'production');
 
     bookingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
